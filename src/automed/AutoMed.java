@@ -5,6 +5,8 @@
  */
 package automed;
 
+import tela.JanelaPrincipal;
+
 /**
  *
  * @author arthur.siqueira
@@ -15,7 +17,8 @@ public class AutoMed {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        JanelaPrincipal janela = new JanelaPrincipal();
+        janela.setVisible(true);
     }
     
 }
