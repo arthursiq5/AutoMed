@@ -5,6 +5,8 @@
  */
 package tela;
 
+import java.sql.Statement;
+
 /**
  *
  * @author arthur.siqueira
@@ -57,6 +59,16 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
         campoDescricao.setText("jTextField3");
 
         buttonSalvar.setText("Salvar");
+        buttonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSalvarMouseClicked(evt);
+            }
+        });
+        buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -178,6 +190,22 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
+        try {
+            Statement st = automed.AutoMed.conexao.createStatement();
+            int resultado = st.executeUpdate("INSERT INTO apresentacao VALUES ("
+                    + "DEFAULT, "
+                    + "'" + campoDescricao.getText() + "')");
+            
+        } catch (Exception e) {
+            System.out.println("Erro salvar xxx = " +e);
+        }
+    }//GEN-LAST:event_buttonSalvarActionPerformed
+
+    private void buttonSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalvarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonSalvarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
