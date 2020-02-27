@@ -70,11 +70,11 @@
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="campoDescricao" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoId" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="campoDescricao" pref="250" max="32767" attributes="0"/>
+                          <Component id="campoId" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="339" max="32767" attributes="0"/>
+                      <EmptySpace pref="175" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -96,7 +96,7 @@
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="campoDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="177" max="32767" attributes="0"/>
+                      <EmptySpace pref="180" max="32767" attributes="0"/>
                       <Component id="buttonSalvar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -115,14 +115,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoId">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField2"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoDescricao">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jTextField3"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="buttonSalvar">
               <Properties>
