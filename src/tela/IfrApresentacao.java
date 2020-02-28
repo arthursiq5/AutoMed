@@ -5,6 +5,9 @@
  */
 package tela;
 
+import automed.ConexaoBD;
+import dao.ApresentacaoDao;
+import entidade.Apresentacao;
 import java.sql.Statement;
 
 /**
@@ -13,6 +16,7 @@ import java.sql.Statement;
  */
 public class IfrApresentacao extends javax.swing.JInternalFrame {
 
+    private ApresentacaoDao apresentacaoDao;
     /**
      * Creates new form IfrApresentacao
      */
@@ -121,6 +125,11 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
         campoBusca.setText("jTextField1");
 
         buttonPesquisar.setText("Pesquisar");
+        buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPesquisarActionPerformed(evt);
+            }
+        });
 
         buttonExcluir.setText("Excluir");
 
@@ -188,20 +197,19 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-        try {
-            Statement st = automed.AutoMed.conexao.createStatement();
-            int resultado = st.executeUpdate("INSERT INTO apresentacao VALUES ("
-                    + "DEFAULT, "
-                    + "'" + campoDescricao.getText() + "')");
-            
-        } catch (Exception e) {
-            System.out.println("Erro salvar xxx = " +e);
-        }
+        Apresentacao apresentacao = new Apresentacao();
+        apresentacao.descricao = this.campoDescricao.getText();
+        
+        new ApresentacaoDao().salvar(apresentacao);
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
     private void buttonSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalvarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonSalvarMouseClicked
+
+    private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
+        new ApresentacaoDao().popularTabela(tableApresentacao, this.campoBusca.getText());
+    }//GEN-LAST:event_buttonPesquisarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
