@@ -165,4 +165,35 @@ public class ApresentacaoDao {
             }
         });
     }
+     
+    public Apresentacao consultar(int id) {
+        Apresentacao apresentacao = null; //= new Apresentacao();
+
+        try {
+            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
+
+            String sql = "SELECT * "
+                    + "FROM apresentacao "
+                    + "WHERE id = " + id;
+
+            System.out.println("SQL: " + sql);
+
+            // executa consulta
+            resultadoQ = st.executeQuery(sql);
+
+            // avanca ResultSet
+            if (resultadoQ.next()) {
+                apresentacao = new Apresentacao();
+                
+                // obtem dados do RS
+                apresentacao.id = resultadoQ.getInt("id");
+                apresentacao.descricao = resultadoQ.getString("descricao");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro ao consultar: " + e);
+        }
+
+        return apresentacao;
+    }
 }
