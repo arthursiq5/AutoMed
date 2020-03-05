@@ -204,15 +204,10 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
         Apresentacao apresentacao = new Apresentacao();
         apresentacao.descricao = this.campoDescricao.getText();
         apresentacao.id = id;
-        JOptionPane.showMessageDialog(
-                    null, 
-                    "Problemas ao salvar registro", 
-                    "Erro", 
-                    JOptionPane.ERROR
-            );
+        
         try{
             new ApresentacaoDao().salvar(apresentacao);
-            JOptionPane.showMessageDialog(null, "Registro salvo com sucesso");
+            JOptionPane.showMessageDialog(null, "Registro salvo com sucesso", "Sucesso", JOptionPane.PLAIN_MESSAGE);
             
             this.campoDescricao.setText("");
             this.campoDescricao.requestFocus();
@@ -223,7 +218,7 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
                     null, 
                     "Problemas ao salvar registro", 
                     "Erro", 
-                    JOptionPane.ERROR
+                    JOptionPane.ERROR_MESSAGE
             );
         }
     }//GEN-LAST:event_buttonSalvarActionPerformed
