@@ -58,6 +58,8 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Descrição");
 
+        campoId.setEnabled(false);
+
         buttonSalvar.setText("Salvar");
         buttonSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
