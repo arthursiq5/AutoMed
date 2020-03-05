@@ -7,10 +7,13 @@ package dao;
 
 import automed.ConexaoBD;
 import entidade.Apresentacao;
+import java.awt.Color;
+import java.awt.Component;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -146,20 +149,20 @@ public class ApresentacaoDao {
             }
         }
         // renderizacao das linhas da tabela = mudar a cor
-//        jTable1.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-//
-//            @Override
-//            public Component getTableCellRendererComponent(JTable table, Object value,
-//                    boolean isSelected, boolean hasFocus, int row, int column) {
-//                super.getTableCellRendererComponent(table, value, isSelected,
-//                        hasFocus, row, column);
-//                if (row % 2 == 0) {
-//                    setBackground(Color.GREEN);
-//                } else {
-//                    setBackground(Color.LIGHT_GRAY);
-//                }
-//                return this;
-//            }
-//        });
+        tabela.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+                super.getTableCellRendererComponent(table, value, isSelected,
+                        hasFocus, row, column);
+                if (row % 2 == 0) {
+                    setBackground(Color.WHITE);
+                } else {
+                    setBackground(Color.LIGHT_GRAY);
+                }
+                return this;
+            }
+        });
     }
 }
