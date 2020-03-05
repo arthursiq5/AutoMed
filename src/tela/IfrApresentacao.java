@@ -220,10 +220,10 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
             this.id = 0;
         }catch(Exception e){
             JOptionPane.showMessageDialog(
-                    null, 
-                    "Problemas ao salvar registro", 
-                    "Erro", 
-                    JOptionPane.ERROR_MESSAGE
+                null, 
+                "Problemas ao salvar registro", 
+                "Erro", 
+                JOptionPane.ERROR_MESSAGE
             );
         }
     }//GEN-LAST:event_buttonSalvarActionPerformed
