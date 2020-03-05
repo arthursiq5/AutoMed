@@ -64,14 +64,14 @@ public class ApresentacaoDao {
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM XXX WHERE DESCRICAO ILIKE '%" + criterio + "%'");
+                    + "SELECT count(*) FROM apresentacao WHERE DESCRICAO ILIKE '%" + criterio + "%'");
 
             resultadoQ.next();
 
             dadosTabela = new Object[resultadoQ.getInt(1)][2];
 
         } catch (Exception e) {
-            System.out.println("Erro ao consultar XXX: " + e);
+            System.out.println("Erro ao consultar apresentacao: " + e);
         }
 
         int lin = 0;
