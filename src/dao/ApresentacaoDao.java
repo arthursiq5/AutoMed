@@ -25,9 +25,19 @@ public class ApresentacaoDao {
     public void salvar(Apresentacao apresentacao){
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-            int resultado = st.executeUpdate("INSERT INTO apresentacao VALUES ("
+            
+            String sql = "";
+            if(apresentacao.id == 0){
+                sql = "INSERT INTO apresentacao VALUES ("
                     + "DEFAULT, "
-                    + "'" + apresentacao.descricao + "')");
+                    + "'" + apresentacao.descricao + "')";
+            }else{
+                sql = "UPDATE apresentacao "
+                    + "SET descricao = '" + apresentacao.descricao + "' "
+                    + "WHERE id = " + apresentacao.id;
+            }
+            
+            int resultado = st.executeUpdate(sql);
             
         } catch (Exception e) {
             System.out.println("Erro ao salvar dados: " +e);
