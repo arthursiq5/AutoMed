@@ -9,13 +9,15 @@ import automed.ConexaoBD;
 import dao.ApresentacaoDao;
 import entidade.Apresentacao;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author arthur.siqueira
  */
 public class IfrApresentacao extends javax.swing.JInternalFrame {
-
+    
+    int id = 0;
     private ApresentacaoDao apresentacaoDao;
     /**
      * Creates new form IfrApresentacao
@@ -201,8 +203,29 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
         Apresentacao apresentacao = new Apresentacao();
         apresentacao.descricao = this.campoDescricao.getText();
-        
-        new ApresentacaoDao().salvar(apresentacao);
+        apresentacao.id = id;
+        JOptionPane.showMessageDialog(
+                    null, 
+                    "Problemas ao salvar registro", 
+                    "Erro", 
+                    JOptionPane.ERROR
+            );
+        try{
+            new ApresentacaoDao().salvar(apresentacao);
+            JOptionPane.showMessageDialog(null, "Registro salvo com sucesso");
+            
+            this.campoDescricao.setText("");
+            this.campoDescricao.requestFocus();
+            
+            this.id = 0;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Problemas ao salvar registro", 
+                    "Erro", 
+                    JOptionPane.ERROR
+            );
+        }
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
     private void buttonSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSalvarMouseClicked
