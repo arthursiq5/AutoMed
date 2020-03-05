@@ -207,7 +207,12 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
         
         try{
             new ApresentacaoDao().salvar(apresentacao);
-            JOptionPane.showMessageDialog(null, "Registro salvo com sucesso", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(
+                null, 
+                "Registro salvo com sucesso", 
+                "Sucesso", 
+                JOptionPane.PLAIN_MESSAGE
+            );
             
             this.campoDescricao.setText("");
             this.campoDescricao.requestFocus();
