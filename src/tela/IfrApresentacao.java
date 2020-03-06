@@ -251,10 +251,8 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
         );
 
         id = Integer.parseInt(idString);
-
-        ApresentacaoDao apDAO = new ApresentacaoDao();
         
-        Apresentacao apresentacao = apDAO.consultar(id);
+        Apresentacao apresentacao = new ApresentacaoDao().consultar(id);
 
         if (apresentacao != null) {
             this.campoDescricao.setText(apresentacao.descricao);
