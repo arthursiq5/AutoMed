@@ -24,6 +24,7 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
      */
     public IfrApresentacao() {
         initComponents();
+        new ApresentacaoDao().popularTabela(this.tableApresentacao, "");
     }
 
     /**
@@ -138,6 +139,11 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
         buttonExcluir.setText("Excluir");
 
         buttonEditar.setText("Editar");
+        buttonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -218,6 +224,7 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
             this.campoDescricao.requestFocus();
             
             this.id = 0;
+            new ApresentacaoDao().popularTabela(this.tableApresentacao, "");
         }catch(Exception e){
             JOptionPane.showMessageDialog(
                 null, 
@@ -235,6 +242,31 @@ public class IfrApresentacao extends javax.swing.JInternalFrame {
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
         new ApresentacaoDao().popularTabela(tableApresentacao, this.campoBusca.getText());
     }//GEN-LAST:event_buttonPesquisarActionPerformed
+
+    private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
+        String idString = String.valueOf(
+            this.tableApresentacao.getValueAt(
+                this.tableApresentacao.getSelectedRow(), 0
+            )
+        );
+
+        id = Integer.parseInt(idString);
+
+        ApresentacaoDao apDAO = new ApresentacaoDao();
+        
+        Apresentacao apresentacao = apDAO.consultar(id);
+
+        if (apresentacao != null) {
+            this.campoDescricao.setText(apresentacao.descricao);
+            this.campoId.setText(String.valueOf(apresentacao.id));
+            
+            jTabbedPane1.setSelectedIndex(0);
+            
+            new ApresentacaoDao().popularTabela(this.tableApresentacao, "");
+        } else {
+            System.out.println("erro na consulta");
+        }
+    }//GEN-LAST:event_buttonEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
